@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RetrofitMockDemo</string>
+    <string name="mock">Mock</string>
+    <string name="real">Real</string>
+</resources>
