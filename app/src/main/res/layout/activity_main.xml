@@ -21,7 +21,7 @@
         tools:context="jp.cordea.retrofitmockdemo.MainActivity">
 
         <EditText
-            android:addTextChangedListener="@{vm.onQueryTextChanged}"
+            android:text="@={vm.query}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

@@ -4,8 +4,6 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.databinding.ObservableArrayList;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ListView;
 
@@ -21,12 +19,20 @@ import retrofit2.Response;
  */
 public class MainViewModel extends BaseObservable {
 
-    private String query;
-
     private ObservableArrayList<Event> events = new ObservableArrayList<>();
 
     public ObservableArrayList<Event> getEvents() {
         return events;
+    }
+
+    private String query;
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     private boolean isLoading;
@@ -80,27 +86,6 @@ public class MainViewModel extends BaseObservable {
                     }
                 });
     }
-
-    public TextWatcher getOnQueryTextChanged() {
-        return onQueryTextChanged;
-    }
-
-    private TextWatcher onQueryTextChanged = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if (charSequence.length() > 0) {
-                query = charSequence.toString();
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-        }
-    };
 
     @BindingAdapter("items")
     public static void bindItems(ListView view, ObservableArrayList<Event> events) {
